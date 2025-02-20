@@ -34,32 +34,78 @@
         }
       }
       .center-text {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: "Georgia", serif;
-        font-size: 28px;
-        font-weight: bold;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 15px 25px;
-        border-radius: 12px;
-        animation: textAnim 4s ease-in-out infinite alternate;
-
-        background: linear-gradient(45deg, #f39c12, #d35400, #e74c3c);
+        position: relative;
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        justify-content: center;
+        top: 20%;
+        color: white;
+        text-shadow: rgba(255, 255, 255, 0.8);
+        font-family: monospace;
+        font-size: 36px;
+        font-weight: bolder;
+      }
+      .center-text p {
+        background: linear-gradient(90deg, #d07008, #e34a08);
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 5px rgb(253, 253, 253), 0 0 10px rgba(0, 255, 255, 0.6),
+          0 0 15px rgba(0, 255, 255, 0.4);
+      }
+      .first-part {
+        animation: toRight 2.7s ease-in;
+      }
+      @keyframes toRight {
+        0% {
+          transform: translateX(-300px) scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+      .second-part {
+        animation: toDown 2.5s ease-out;
+      }
+      @keyframes toDown {
+        0% {
+          transform: translateY(-300px) scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+      .last-part {
+        animation: toLeft 2.9s ease-in;
       }
 
-      @keyframes textAnim {
-        from {
-          opacity: 0.6;
-          transform: translate(-50%, -50%) scale(0.9) rotate(-2deg);
+      @keyframes toLeft {
+        0% {
+          transform: translateX(300px) scale(0.8);
+          opacity: 0;
         }
-        to {
+        100% {
+          transform: translateX(0) scale(1);
           opacity: 1;
-          transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+        }
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0) rotate(0deg);
+        }
+        25% {
+          transform: translateX(-3px) rotate(-2deg);
+        }
+        50% {
+          transform: translateX(3px) rotate(2deg);
+        }
+        75% {
+          transform: translateX(-3px) rotate(-2deg);
         }
       }
 
@@ -122,7 +168,10 @@
   </head>
   <body>
     <div class="center-text">
-      Kışın Güneşine, her gülenin gülüşüne kanmayın, hayırlı cumalar
+      <p class="first-part">Kışın Güneşine</p>
+      <p class="second-part">, her gülenin gülüşüne kanmayın</p>
+
+      <p class="last-part">, hayırlı cumalar</p>
     </div>
     <div class="snowman">
       <div class="bottom"></div>
