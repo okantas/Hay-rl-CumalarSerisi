@@ -93,21 +93,6 @@
           opacity: 1;
         }
       }
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0) rotate(0deg);
-        }
-        25% {
-          transform: translateX(-3px) rotate(-2deg);
-        }
-        50% {
-          transform: translateX(3px) rotate(2deg);
-        }
-        75% {
-          transform: translateX(-3px) rotate(-2deg);
-        }
-      }
 
       .snowman {
         position: absolute;
@@ -120,7 +105,6 @@
       }
 
       .snowman div {
-        background: white;
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
         position: absolute;
@@ -162,18 +146,21 @@
         bottom: 380px;
       }
       .bottom {
+        background: white;
         width: 200px;
         height: 200px;
         bottom: 0;
       }
 
       .middle {
+        background: white;
         width: 140px;
         height: 140px;
         bottom: 160px;
       }
 
       .head {
+        background: white;
         width: 100px;
         height: 100px;
         bottom: 280px;
@@ -198,6 +185,18 @@
       .eye.right {
         right: 25px;
         background: black;
+      }
+      .nose {
+        width: 0px;
+        height: 0px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 50px solid orangered;
+        position: relative;
+        z-index: 1;
+        top: 40px;
+        left: 20px;
+        transform: rotate(45deg);
       }
     </style>
   </head>
