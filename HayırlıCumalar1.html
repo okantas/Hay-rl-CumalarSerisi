@@ -3,7 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Snowflake Rain</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: radial-gradient(circle, #001f3f, #000c1a);
+        position: relative;
+        height: 100vh;
+      }
+
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        opacity: 0.9;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        from {
+          transform: translateY(-10vh) translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(110vh) translateX(10px);
+          opacity: 0;
+        }
+      }
+      .center-text {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Georgia", serif;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px 25px;
+        border-radius: 12px;
+        animation: textAnim 4s ease-in-out infinite alternate;
+
+        background: linear-gradient(45deg, #f39c12, #d35400, #e74c3c);
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      @keyframes textAnim {
+        from {
+          opacity: 0.6;
+          transform: translate(-50%, -50%) scale(0.9) rotate(-2deg);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+        }
+      }
+
+      .snowman {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .snowman div {
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+        position: absolute;
+      }
+
+      .bottom {
+        width: 200px;
+        height: 200px;
+        bottom: 0;
+      }
+
+      .middle {
+        width: 140px;
+        height: 140px;
+        bottom: 160px;
+      }
+
+      .head {
+        width: 100px;
+        height: 100px;
+        bottom: 280px;
+        position: relative;
+      }
+
+      .eye {
+        width: 10px;
+        height: 10px;
+        background: black;
+        border-radius: 50%;
+        position: absolute;
+        top: 30px;
+        z-index: 1;
+      }
+
+      .eye.left {
+        left: 25px;
+        background: black;
+      }
+
+      .eye.right {
+        right: 25px;
+        background: black;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="center-text">
+      Kışın Güneşine, her gülenin gülüşüne kanmayın, hayırlı cumalar
+    </div>
+    <div class="snowman">
+      <div class="bottom"></div>
+      <div class="middle"></div>
+      <div class="head">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+      </div>
+    </div>
+
+    <script>
+      function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        document.body.appendChild(snowflake);
+
+        let size = Math.random() * 10 + 5;
+        let duration = Math.random() * 5 + 3;
+        let position = Math.random() * window.innerWidth;
+
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${position}px`;
+        snowflake.style.animationDuration = `${duration}s`;
+
+        setTimeout(() => {
+          snowflake.remove();
+        }, duration * 1000);
+      }
+
+      for (let i = 0; i < 100; i++) {
+        createSnowflake();
+      }
+      setInterval(createSnowflake, 50);
+    </script>
+  </body>
 </html>
