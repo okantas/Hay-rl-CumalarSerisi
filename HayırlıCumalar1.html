@@ -34,16 +34,17 @@
         }
       }
       .center-text {
+        text-align: center;
         position: relative;
         display: flex;
         height: 100vh;
         width: 100%;
         justify-content: center;
-        top: 20%;
+        top: 10%;
         color: white;
         text-shadow: rgba(255, 255, 255, 0.8);
         font-family: monospace;
-        font-size: 36px;
+        font-size: 26px;
         font-weight: bolder;
       }
       .center-text p {
@@ -54,38 +55,13 @@
           0 0 15px rgba(0, 255, 255, 0.4);
       }
       .first-part {
-        animation: toRight 3.7s ease-in;
+        animation: toDown 3s ease-out;
+        width: 70%;
       }
-      @keyframes toRight {
-        0% {
-          transform: translateX(-300px) scale(0.8);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0) scale(1);
-          opacity: 1;
-        }
-      }
-      .second-part {
-        animation: toDown 3.5s ease-out;
-      }
+
       @keyframes toDown {
         0% {
           transform: translateY(-300px) scale(0.8);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0) scale(1);
-          opacity: 1;
-        }
-      }
-      .last-part {
-        animation: toLeft 3.9s ease-in;
-      }
-
-      @keyframes toLeft {
-        0% {
-          transform: translateX(300px) scale(0.8);
           opacity: 0;
         }
         100% {
@@ -202,10 +178,9 @@
   </head>
   <body>
     <div class="center-text">
-      <p class="first-part">Kışın Güneşine</p>
-      <p class="second-part">, her gülenin gülüşüne kanmayın</p>
-
-      <p class="last-part">, hayırlı Cumalar</p>
+      <p class="first-part">
+        Kışın Güneşine her gülenin gülüşüne kanmayın , hayırlı Cumalar
+      </p>
     </div>
     <div class="hat">
       <div class="hat-top"></div>
