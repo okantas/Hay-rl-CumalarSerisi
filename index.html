@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramadan Animation</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #0f172a;
+        overflow: hidden;
+        position: relative;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .text {
+        position: absolute;
+        z-index: 1;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        text-shadow: 0 0 15px rgba(255, 223, 0, 0.8);
+        opacity: 0;
+        animation: helicopterSpin 3s ease-in-out forwards, fadeIn 3s forwards;
+      }
+
+      @keyframes helicopterSpin {
+        0% {
+          opacity: 0;
+          transform: scale(0) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2) rotate(720deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .moon-container {
+        position: absolute;
+        opacity: 0;
+        animation: popIn 1s ease-out forwards,
+          swing 1s infinite ease-in-out alternate;
+      }
+      @keyframes swing {
+        0% {
+          transform: rotate(-6deg);
+        }
+        100% {
+          transform: rotate(6deg);
+        }
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .moon {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background: gold;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 223, 0, 0.9);
+      }
+
+      .moon::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background: #0f172a;
+        border-radius: 50%;
+        rotate: 150deg;
+      }
+
+      .string {
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        width: 2px;
+        height: 35px;
+        background: gold;
+        transform: translateX(-50%);
+      }
+
+      .star {
+        position: absolute;
+        top: 105px;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        background: gold;
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+        transform: translateX(-50%);
+        box-shadow: 0 0 20px rgba(255, 223, 0, 0.9);
+        animation: sway 1s infinite ease-in-out;
+      }
+
+      @keyframes sway {
+        0% {
+          transform: translateX(-50%) rotate(-5deg) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) rotate(5deg) translateY(3px);
+        }
+        100% {
+          transform: translateX(-50%) rotate(-5deg) translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      Uyusak rüyalar kandırıyor , uyansak insanlar<br />Hayırlı Cumalar 🌙
+    </div>
+
+    <script>
+      function createMoon() {
+        let moonContainer = document.createElement("div");
+        moonContainer.classList.add("moon-container");
+
+        let moon = document.createElement("div");
+        moon.classList.add("moon");
+
+        let string = document.createElement("div");
+        string.classList.add("string");
+
+        let star = document.createElement("div");
+        star.classList.add("star");
+
+        moon.appendChild(string);
+        moon.appendChild(star);
+        moonContainer.appendChild(moon);
+        document.body.appendChild(moonContainer);
+
+        let randomX, randomY;
+        let centerX = window.innerWidth / 3;
+        let centerY = window.innerHeight / 2;
+
+        do {
+          randomX = Math.random() * window.innerWidth;
+          randomY = Math.random() * window.innerHeight;
+        } while (
+          Math.abs(randomX - centerX) < 120 &&
+          Math.abs(randomY - centerY) < 80
+        );
+
+        moonContainer.style.left = `${randomX}px`;
+        moonContainer.style.top = `${randomY}px`;
+
+        setTimeout(() => {
+          moonContainer.style.opacity = "1";
+        }, 200);
+      }
+
+      for (let i = 0; i < 30; i++) {
+        setTimeout(createMoon, i * 300);
+      }
+    </script>
+  </body>
+</html>
